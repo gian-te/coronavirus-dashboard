@@ -1,4 +1,4 @@
-<div style="height:  100%; display: block;">
+<div class="container" style="height:  100%; display: block;">
     <!-- <div>
         <div style="display: inline-block;"> Dashboard </div>
         <div style="display: inline-block;"> Countries </div>
@@ -8,16 +8,16 @@
     </div> -->
     <div>
         <div  style="display: inline-block; width: 15%; min-width: 15%; float: left;">
-            <app-heatmap-card></app-heatmap-card>
-            <app-chart-card></app-chart-card>
+            <app-global-tabular-card></app-global-tabular-card>
+            <app-global-piechart-card></app-global-piechart-card>
 
         </div>
         <div style="display: inline-block; max-width: 65%; width: 65%; max-height: 80%;">
-            <app-map-card ></app-map-card>
-            <app-global-graph-card></app-global-graph-card>
+            <app-global-map-card ></app-global-map-card>
+            <app-global-timeseries-card></app-global-timeseries-card>
         </div>
         <div style="display: inline-block; min-width: 20%; float: right;">
-            <app-yesterday-card ></app-yesterday-card>
+            <app-global-tabular-card ></app-global-tabular-card>
         </div>
     </div>
 </div>

@@ -33,23 +33,9 @@ mat-card-header.mat-card-header {
 
 .card-header-image
 {
-  background-image: url('../../../../assets/transparent-chart.png');
+  background-image: url('../../../../assets/transparent-human.png');
   background-size: cover;
 }
-
-.card-map-header-image
-{
-  background-image: url('../../../../assets/transparent-earth.png');
-  background-size: cover;
-}
-
-.card-map-header
-{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-
 
 .card-icon {
   height: 64px;
@@ -58,7 +44,24 @@ mat-card-header.mat-card-header {
 .card-header {
   max-width: 100%;
   margin-top: 10px;
+}
 
+.huge
+{
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.medium
+{
+  font-size: 24px;
+  font-weight: bold;
+
+}
+
+.normal
+{
+  font-size: 12px;;
 }
 
 .mat-card:not([class*=mat-elevation-z]) {
@@ -67,6 +70,18 @@ mat-card-header.mat-card-header {
               0 1px 3px 0 rgba(0,0,0,1);
 }
 
-th.mat-sort-header-sorted {
-  color: black;
+mat-grid-tile {
+  background: rgb(137, 212, 236);
+  margin: 10px 10px;
+  height: fit-content;
+}
+
+.card-container
+{
+  background-color: #ffffff;
+}
+
+.mat-figure
+{
+  margin: 5px;
 }

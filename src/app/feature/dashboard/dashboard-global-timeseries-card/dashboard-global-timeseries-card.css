@@ -20,8 +20,6 @@ mat-card-header.mat-card-header {
   padding: 0;
 }
 
-
-
 .mat-card-title {
   font-size: 18px;
   font-weight: 400;
@@ -33,23 +31,9 @@ mat-card-header.mat-card-header {
 
 .card-header-image
 {
-  background-image: url('../../../../assets/transparent-chart.png');
+  background-image: url('../../../../assets/transparent-line-graph.png');
   background-size: cover;
 }
-
-.card-map-header-image
-{
-  background-image: url('../../../../assets/transparent-earth.png');
-  background-size: cover;
-}
-
-.card-map-header
-{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-
 
 .card-icon {
   height: 64px;
@@ -58,7 +42,11 @@ mat-card-header.mat-card-header {
 .card-header {
   max-width: 100%;
   margin-top: 10px;
+}
 
+.card-container
+{
+  background-color: #ffffff;
 }
 
 .mat-card:not([class*=mat-elevation-z]) {

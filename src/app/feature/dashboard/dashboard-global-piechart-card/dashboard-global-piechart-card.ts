@@ -29,11 +29,11 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: 'app-chart-card',
-  templateUrl: './dashboard-chart-card.html',
-  styleUrls: ['./dashboard-chart-card.css'],
+  selector: 'app-global-piechart-card',
+  templateUrl: './dashboard-global-piechart-card.html',
+  styleUrls: ['./dashboard-global-piechart-card.css'],
 })
-export class ChartCardComponent implements OnInit, OnDestroy {
+export class GlobalPiechartCardComponent implements OnInit, OnDestroy {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 

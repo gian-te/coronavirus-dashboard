@@ -31,6 +31,6 @@ export class DashboardAppDataService extends AppDataService {
 
   public getGlobalHistoricalData() {
     let headers = new HttpHeaders();
-    return this._http.get(this.getWebApiHost() + 'historical/all?lastdays=280', { headers });
+    return this._http.get(this.getWebApiHost() + 'historical/all?lastdays=230', { headers });
   }
 }

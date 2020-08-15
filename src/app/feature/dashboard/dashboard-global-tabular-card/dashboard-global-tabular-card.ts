@@ -16,11 +16,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-heatmap-card',
-  templateUrl: './dashboard-heatmap-card.html',
-  styleUrls: ['./dashboard-heatmap-card.css'],
+  selector: 'app-global-tabular-card',
+  templateUrl: './dashboard-global-tabular-card.html',
+  styleUrls: ['./dashboard-global-tabular-card.css'],
 })
-export class HeatmapCardComponent implements OnInit, OnDestroy {
+export class GlobalTabularCardComponent implements OnInit, OnDestroy {
 
   public data: CountryStats[];
   public displayedColumns: string[] = ['country',  'confirmed', 'recovered', 'deaths'];

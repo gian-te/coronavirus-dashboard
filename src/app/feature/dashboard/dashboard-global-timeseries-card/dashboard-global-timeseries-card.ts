@@ -17,11 +17,11 @@ import {
 } from 'ng-apexcharts';
 
 @Component({
-  selector: 'app-global-graph-card',
-  templateUrl: './dashboard-global-graph-card.html',
-  styleUrls: ['./dashboard-global-graph-card.css'],
+  selector: 'app-global-timeseries-card',
+  templateUrl: './dashboard-global-timeseries-card.html',
+  styleUrls: ['./dashboard-global-timeseries-card.css'],
 })
-export class GlobalGraphCardComponent implements OnInit, OnDestroy {
+export class GlobalTimeseriesCardComponent implements OnInit, OnDestroy {
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -42,7 +42,7 @@ export class GlobalGraphCardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // https://corona.lmao.ninja/v2/historical/all
-    // https://corona.lmao.ninja/v2/historical/all?lastdays=280
+    // https://corona.lmao.ninja/v2/historical/all?lastdays=230
     // this.dashboardService.getGlobalHistoricalData();
   }
 
@@ -61,55 +61,97 @@ export class GlobalGraphCardComponent implements OnInit, OnDestroy {
       });
     this.dashboardService.state$
       .pipe(
-        map(state => state.globalData),
-        filter(data => data != null),
-        distinctUntilChanged()
-      )
-      .subscribe(response => {
-        console.log(response[0]);
-        const ph = response.find(item => item.country === 'Philippines');
-        console.log(ph);
-        this.updatedAt = ph.updatedAt;
-      });
-    this.dashboardService.state$
-      .pipe(
         map(state => state.allAsOfYesterday),
         filter(data => data != null),
         distinctUntilChanged()
       )
       .subscribe(response => {
         this.latest = response.updated;
-        if (this.latest)
-        {
-          this.latest -= 19872000000;
-        }
         this.dashboardService.getGlobalHistoricalData();
       });
   }
 
   // https://apexcharts.com/angular-chart-demos/line-charts/zoomable-timeseries/
   renderChart() {
-
     let day = this.latest;
-    const dates = [];
+    const dayInMilliseconds = 86400000;
+    const confirmed = [];
+    const recovered = [];
+    const deaths = [];
 
-    Object.keys(this.data.cases).forEach(key => {
-      day = day + 86400000; // + 1 day
-      try {
+    Object.keys(this.data.cases).reverse().forEach(key => {
+    if (!this.updatedAt)
+      {
+        this.updatedAt = new Date(key).toString();
+      }
+
+    day = day - dayInMilliseconds; // + 1 day
+    try {
         // tslint:disable-next-line: radix
         const count = parseInt(this.data.cases[key]);
-        dates.push([day, count]);
+        confirmed.push([day, count]);
       }
       catch (err){
         console.log(err);
+        day = day + dayInMilliseconds;
       }
-      console.log(dates);
+      // console.log(dates);
+    });
+
+    day = this.latest;
+    Object.keys(this.data.recovered).reverse().forEach(key => {
+    if (!this.updatedAt)
+      {
+        this.updatedAt = new Date(key).toString();
+      }
+
+    day = day - dayInMilliseconds; // + 1 day
+    try {
+        // tslint:disable-next-line: radix
+        const count = parseInt(this.data.recovered[key]);
+        recovered.push([day, count]);
+      }
+      catch (err){
+        console.log(err);
+        day = day + dayInMilliseconds;
+      }
+      // console.log(dates);
+    });
+
+    day = this.latest;
+    Object.keys(this.data.deaths).reverse().forEach(key => {
+    if (!this.updatedAt)
+      {
+        this.updatedAt = new Date(key).toString();
+      }
+
+    day = day - dayInMilliseconds; // + 1 day
+    try {
+        // tslint:disable-next-line: radix
+        const count = parseInt(this.data.deaths[key]);
+        deaths.push([day, count]);
+      }
+      catch (err){
+        console.log(err);
+        day = day + dayInMilliseconds;
+      }
+      // console.log(dates);
     });
 
     this.series = [
       {
-        name: 'Confirmed',
-        data: dates
+        name: 'All Confirmed Cases',
+        data: confirmed
+      }
+      ,
+      {
+        name: 'Recovered',
+        data: recovered
+      }
+      ,
+      {
+        name: 'Deaths',
+        data: deaths
       }
     ];
     this.chart = {
@@ -152,7 +194,7 @@ export class GlobalGraphCardComponent implements OnInit, OnDestroy {
         }
       },
       title: {
-        text: 'Confirmed'
+        text: 'Count'
       }
     };
     this.xaxis = {

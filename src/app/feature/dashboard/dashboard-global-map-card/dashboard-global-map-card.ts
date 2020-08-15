@@ -10,11 +10,11 @@ import {  CountryStats } from '../../../models/dashboard/country-stats';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 
 @Component({
-  selector: 'app-map-card',
-  templateUrl: './dashboard-map-card.html',
-  styleUrls: ['./dashboard-map-card.css'],
+  selector: 'app-global-map-card',
+  templateUrl: './dashboard-global-map-card.html',
+  styleUrls: ['./dashboard-global-map-card.css'],
 })
-export class MapCardComponent implements OnInit, OnDestroy {
+export class GlobalMapCardComponent implements OnInit, OnDestroy {
 
   public data: CountryStats[];
   // public yesterdayData: YesterdayStats;

@@ -16,11 +16,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-yesterday-card',
-  templateUrl: './dashboard-yesterday-card.html',
-  styleUrls: ['./dashboard-yesterday-card.css'],
+  selector: 'app-global-summary-card',
+  templateUrl: './dashboard-global-summary-card.html',
+  styleUrls: ['./dashboard-global-summary-card.css'],
 })
-export class YesterdayCardComponent implements OnInit, OnDestroy {
+export class GlobalSummaryCardComponent implements OnInit, OnDestroy {
 
   public yesterdayData: YesterdayStats;
 
