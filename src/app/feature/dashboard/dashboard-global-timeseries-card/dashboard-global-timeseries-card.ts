@@ -145,7 +145,7 @@ export class GlobalTimeseriesCardComponent implements OnInit, OnDestroy {
       }
       ,
       {
-        name: 'Recovered',
+        name: 'Recoveries',
         data: recovered
       }
       ,
