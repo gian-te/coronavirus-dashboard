@@ -1,0 +1,53 @@
+<div style="margin: 5px 5px 5px 5px;">
+
+ <!-- Table inside a card-->
+ <mat-card class="card-header">
+  <mat-card-header>
+    <div mat-card-avatar class="card-header-image"></div>
+    <mat-card-title> <b> Global Cases per Province/State (sorted by Confirmed Cases)</b></mat-card-title>
+    <mat-card-subtitle>Updated as of {{ updatedAt }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <table mat-table [dataSource]="dataSource" matSort matSortActive="confirmed" matSortDisableClear>
+
+        <!-- Country Column -->
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Area </th>
+          <td mat-cell *matCellDef="let item"> {{item.country}}{{item.province == null ? '' : ', ' + item.province}}{{item.county == null ? '' : ', ' + item.county}}</td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <!-- <ng-container matColumnDef="county">
+          <th mat-header-cell *matHeaderCellDef> County </th>
+          <td mat-cell *matCellDef="let item"> {{item.county == null ? 'N/A' : item.county}} </td>
+        </ng-container> -->
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="confirmed" >
+          <th mat-header-cell  *matHeaderCellDef mat-sort-header> Confirmed </th>
+          <td mat-cell *matCellDef="let item"> {{item.stats.confirmed}} </td>
+        </ng-container>
+    
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="recovered">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Recovered </th>
+          <td mat-cell *matCellDef="let item"> {{item.stats.recovered}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="deaths">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Deaths </th>
+          <td mat-cell *matCellDef="let item"> {{item.stats.deaths}} </td>
+        </ng-container>
+    
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+      <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+</mat-card>
+
+
+</div>
