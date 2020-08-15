@@ -61,11 +61,13 @@ export class GlobalPiechartCardComponent implements OnInit, OnDestroy {
       )
       .subscribe(response => {
         that.yesterdayData = response;
+
+        // https://apexcharts.com/angular-chart-demos/pie-charts/
         this.chartOptions = {
           series: [that.yesterdayData.active, that.yesterdayData.recovered, that.yesterdayData.deaths],
           chart: {
             width: 360,
-            type: 'pie'
+            type: 'donut'
           },
           labels: ['Active', 'Recovered', 'Died'],
           responsive: [
