@@ -2,7 +2,7 @@
 <mat-card *ngIf='yesterdayData' class="card-header" title="Updated every 15 minutes by JHUCSSE.">
   <mat-card-header>
     <div mat-card-avatar class="card-header-image"></div>
-    <mat-card-title><b>Summarized View of Global Data</b></mat-card-title>
+    <mat-card-title><b>Global Data By The Numbers</b></mat-card-title>
     <mat-card-subtitle>Updated Every 15 minutes</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content style="margin-top: 10px;">
@@ -36,7 +36,7 @@
             <span class="huge"> {{yesterdayData.deaths.toLocaleString()}}</span>
           </div>
         </mat-grid-tile>
-        <mat-grid-tile>
+        <!-- <mat-grid-tile>
           <div>
             <span class="huge"> Population:</span>
             <br/>
@@ -68,7 +68,7 @@
             <span class="medium">Deaths: {{yesterdayData.todayDeaths.toLocaleString()}}</span>
 
           </div>
-        </mat-grid-tile>
+        </mat-grid-tile> -->
         <!-- <mat-grid-tile>4</mat-grid-tile>
         <mat-grid-tile>4</mat-grid-tile>
         <mat-grid-tile>4</mat-grid-tile>

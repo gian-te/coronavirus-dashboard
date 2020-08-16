@@ -5,8 +5,10 @@ import { DashboardComponent } from './dashboard.component';
 import { GlobalTimeseriesCardComponent } from './dashboard-global-timeseries-card/dashboard-global-timeseries-card';
 import { GlobalTabularCardComponent } from './dashboard-global-tabular-card/dashboard-global-tabular-card';
 import { GlobalSummaryCardComponent } from './dashboard-global-summary-card/dashboard-global-summary-card';
-import { GlobalPiechartCardComponent } from './dashboard-global-piechart-card/dashboard-global-piechart-card';
+import { GlobalCaseRatioCardComponent  } from './dashboard-global-case-ratio-card/dashboard-global-case-ratio-card';
 import { GlobalMapCardComponent } from './dashboard-global-map-card/dashboard-global-map-card';
+import { GlobalBubbleChartCardComponent } from './dashboard-global-bubblechart-card/dashboard-global-bubblechart-card';
+import { GlobalTodayCasesCardComponent } from './dashboard-global-todaycases-card/dashboard-global-todaycases-card';
 
 
 export const routes: Routes = [
@@ -24,6 +26,6 @@ export class DashboardRoutingModule { }
 
 export const routedComponents = [
   // tslint:disable-next-line: max-line-length
-  DashboardComponent, GlobalTabularCardComponent, GlobalMapCardComponent, GlobalSummaryCardComponent, GlobalPiechartCardComponent, GlobalTimeseriesCardComponent
+  DashboardComponent, GlobalTabularCardComponent, GlobalMapCardComponent, GlobalSummaryCardComponent, GlobalCaseRatioCardComponent, GlobalTimeseriesCardComponent, GlobalBubbleChartCardComponent,GlobalTodayCasesCardComponent
 ];
 

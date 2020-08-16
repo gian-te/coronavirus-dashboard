@@ -1,0 +1,28 @@
+<div class="card-container" style="margin-left: 2px; margin-right: 5px; width: 20%; display: inline-block; float: right;">
+
+ <!-- Table inside a card-->
+ <mat-card class="card-header">
+  <mat-card-header>
+    <div mat-card-avatar class="card-header-image"></div>
+    <mat-card-title> <b>Interactive Bubble Chart</b></mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="chartOptions">
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [fill]="chartOptions.fill"
+          [dataLabels]="chartOptions.dataLabels"
+          [title]="chartOptions.title"
+          [yaxis]="chartOptions.yaxis"
+        ></apx-chart>
+      </div>
+    </div>
+    </mat-card-content>
+</mat-card>
+
+
+</div>

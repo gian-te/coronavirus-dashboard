@@ -33,7 +33,13 @@ mat-card-header.mat-card-header {
 
 .card-header-image
 {
-  background-image: url('../../../../assets/transparent-human.png');
+  background-image: url('../../../../assets/transparent-chart.png');
+  background-size: cover;
+}
+
+.card-map-header-image
+{
+  background-image: url('../../../../assets/transparent-earth.png');
   background-size: cover;
 }
 
@@ -46,22 +52,9 @@ mat-card-header.mat-card-header {
   margin-top: 10px;
 }
 
-.huge
+.card-container
 {
-  font-size: 36px;
-  font-weight: bold;
-}
-
-.medium
-{
-  font-size: 24px;
-  font-weight: bold;
-
-}
-
-.normal
-{
-  font-size: 12px;;
+  background-color: #ffffff;
 }
 
 .mat-card:not([class*=mat-elevation-z]) {
@@ -70,18 +63,6 @@ mat-card-header.mat-card-header {
               0 1px 3px 0 rgba(0,0,0,1);
 }
 
-mat-grid-tile {
-  background:#58afe8;
-  margin: 10px 10px;
-  height: fit-content;
-}
-
-.card-container
-{
-  background-color: #ffffff;
-}
-
-.mat-figure
-{
-  margin: 5px;
+th.mat-sort-header-sorted {
+  color: black;
 }

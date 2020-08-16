@@ -10,7 +10,6 @@ import { Stats } from 'src/app/models/dashboard/country-stats';
 @Injectable()
 export class DashboardAppDataService extends AppDataService {
 
- 
   constructor(protected _http: HttpClient, public configService: ConfigurationManagerService) {
     super(configService);
   }
@@ -32,5 +31,12 @@ export class DashboardAppDataService extends AppDataService {
   public getGlobalHistoricalData() {
     let headers = new HttpHeaders();
     return this._http.get(this.getWebApiHost() + 'historical/all?lastdays=230', { headers });
+  }
+
+  public getAllCurrentCountryData() {
+    let headers = new HttpHeaders();
+    return this._http.get(this.getWebApiHost() + 'continents?yesterday=true&sort', { headers });
+
+    // return this._http.get(this.getWebApiHost() + 'countries?yesterday&sort', { headers });
   }
 }

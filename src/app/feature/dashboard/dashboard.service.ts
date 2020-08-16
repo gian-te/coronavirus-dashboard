@@ -16,10 +16,12 @@ export class DashboardState {
   globalData: any;
   allAsOfYesterday: any;
   globalHistoricalData: any;
+  allCurrentCountryData: any;
 }
 
 @Injectable()
 export class DashboardService extends Store<DashboardState> {
+  
 
 
   constructor(private appDataService: DashboardAppDataService,
@@ -40,7 +42,7 @@ export class DashboardService extends Store<DashboardState> {
       });
   }
 
-  getGlobalHistoricalData() {
+  public getGlobalHistoricalData() {
     this.spinnerService.show();
     this.appDataService.getGlobalHistoricalData().subscribe(data => {
         this.setState({
@@ -51,7 +53,7 @@ export class DashboardService extends Store<DashboardState> {
       });
   }
   
-
+  // global summary without breakdown
   public getAllAsOfYesterday(): void {
      this.spinnerService.show();
      this.appDataService.getAllAsOfYesterday().subscribe(data => {
@@ -62,6 +64,19 @@ export class DashboardService extends Store<DashboardState> {
         this.spinnerService.hide();
       });
   }
+
+  // country level breakdown
+  public getAllCurrentCountryData() {
+    this.spinnerService.show();
+    this.appDataService.getAllCurrentCountryData().subscribe(data => {
+       this.setState({
+         ...this.state,
+         allCurrentCountryData: data,
+       });
+       this.spinnerService.hide();
+     });
+  }
+
   // private onNotificationReceived(data: any) {
   //   let notification: Notification = {
   //     id: data.Id,

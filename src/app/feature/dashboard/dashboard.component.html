@@ -9,12 +9,16 @@
     <div>
         <div  style="display: inline-block; width: 15%; min-width: 15%; float: left;">
             <app-global-tabular-card></app-global-tabular-card>
-            <app-global-piechart-card></app-global-piechart-card>
+            <app-global-case-ratio-card></app-global-case-ratio-card>
 
         </div>
         <div style="display: inline-block; max-width: 65%; width: 65%; max-height: 80%;">
             <app-global-map-card ></app-global-map-card>
-            <app-global-timeseries-card></app-global-timeseries-card>
+            <div>
+                <app-global-timeseries-card></app-global-timeseries-card>
+                <app-global-todaycases-card></app-global-todaycases-card>
+                <app-global-bubblechart-card></app-global-bubblechart-card>
+            </div>
         </div>
         <div style="display: inline-block; min-width: 20%; float: right;">
             <app-global-summary-card ></app-global-summary-card>
