@@ -82,7 +82,7 @@ export class GlobalTodayCasesCardComponent implements OnInit, OnDestroy {
         this.chartOptions = {
           title: {
             // tslint:disable-next-line: max-line-length
-            text:  `Today's New Cases: ` + that.data.todayCases, // + '\n' +  `Today's Recoveries: ` + that.data.todayRecovered + '\n' +  `Today's Deaths: ` + that.data.todayDeaths  ,
+            text:  `Today's New Cases: ` + that.data.todayCases.toLocaleString(), // + '\n' +  `Today's Recoveries: ` + that.data.todayRecovered + '\n' +  `Today's Deaths: ` + that.data.todayDeaths  ,
             align: 'center'
           },
         // tslint:disable-next-line: max-line-length
@@ -113,13 +113,13 @@ export class GlobalTodayCasesCardComponent implements OnInit, OnDestroy {
           }
         },
         colors: ['#00e396', '#feb019', '#39539E'],
-      labels: ['Recoveries (' + this.data.todayRecovered + ')', 'Deaths (' + this.data.todayDeaths + ')'],
+      labels: ['Recoveries (' + this.data.todayRecovered.toLocaleString() + ')', 'Deaths (' + this.data.todayDeaths.toLocaleString() + ')'],
       legend: {
         show: true,
         floating: true,
         fontSize: '12px',
         position: 'left',
-        offsetX: -20,
+        offsetX: -30,
         offsetY: 70,
         labels: {
           useSeriesColors: true

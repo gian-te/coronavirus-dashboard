@@ -24,7 +24,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     routedComponents,
-    CountriesComponent, // container component
+    // container component
+    CountriesComponent,
   ],
   imports: [
     CommonModule,

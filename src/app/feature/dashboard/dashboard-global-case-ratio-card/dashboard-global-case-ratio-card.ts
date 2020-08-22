@@ -76,6 +76,7 @@ export class GlobalCaseRatioCardComponent implements OnInit, OnDestroy {
           colors: ['#00e396', '#ff4560', '#39539E'],
           legend:
           {
+              offsetY: 45,
               show: true,
               labels: {
                   useSeriesColors: true

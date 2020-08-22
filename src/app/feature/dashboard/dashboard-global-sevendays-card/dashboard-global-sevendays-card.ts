@@ -61,30 +61,59 @@ export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         that.data = response;
         that.renderStackedColumnChart();
+        console.log(that.data);
       });
 
   }
 
   // https://apexcharts.com/angular-chart-demos/bubble-charts/simple/
   renderStackedColumnChart() {
-      
+    const dates = [];
+    const confirmed = [];
+    const recovered = [];
+    const deaths = [];
+    const active = [];
+
+    // loop over cases
+    Object.keys(this.data.cases).forEach(key => {
+      dates.unshift(key);
+        // console.log('\n' + key + ': ' + this.data.cases[key]);
+      confirmed.unshift(this.data.cases[key]);
+    });
+
+    Object.keys(this.data.deaths).forEach(key => {
+        // console.log('\n' + key + ': ' + this.data.cases[key]);
+      deaths.unshift(this.data.deaths[key] );
+    });
+
+    Object.keys(this.data.recovered).forEach(key => {
+
+        // console.log('\n' + key + ': ' + this.data.cases[key]);
+      recovered.unshift(this.data.recovered[key]);
+      });
+
+    for (let i = 0; i < confirmed.length; i++)
+    {
+      active.unshift(confirmed[i] - recovered[i]);
+    }
+
     this.chartOptions = {
       series: [
         {
           name: 'Confirmed',
-          data: [44, 55, 41, 37, 22, 43, 21]
+          data: confirmed
         },
         {
           name: 'Recovered',
-          data: [12, 17, 11, 9, 15, 11, 20]
+          data: recovered
         },
         {
           name: 'Active',
-          data: [53, 32, 33, 52, 13, 43, 32]
+          data: active
         },
         {
           name: 'Deaths',
-          data: [9, 7, 5, 8, 6, 9, 4]
+          data: deaths
         }
       ],
       chart: {
@@ -105,10 +134,10 @@ export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
         text: 'Case Breakdown'
       },
       xaxis: {
-        categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
+        categories: dates,
         labels: {
           formatter(val) {
-            return val + 'K';
+            return val.toLocaleString(); // + 'K';
           }
         }
       },
@@ -120,7 +149,7 @@ export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
       tooltip: {
         y: {
           formatter(val) {
-            return val + 'K';
+            return val.toLocaleString() + ''; // + 'K';
           }
         }
       },
