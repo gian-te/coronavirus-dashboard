@@ -1,11 +1,11 @@
-<div class="card-container" style="margin-right: 5px; margin-left: 2px; width: 49.5%; display: inline-block; float: right;">
+<div class="card-container" style="margin-right: 5px; margin-left: 2px; width: 49.2%; display: inline-block; float: right;">
 
  <!-- Table inside a card-->
  <mat-card style="height: 425px;">
   <mat-card-header>
     <div mat-card-avatar class="card-header-image"></div>
-    <mat-card-title> <b>7-Day Data</b></mat-card-title>
-    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-title> <b>7-Day Data </b></mat-card-title>
+    <mat-card-subtitle>Snapshot as of {{updatedAt}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="chartOptions">

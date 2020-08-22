@@ -39,7 +39,7 @@ export type ChartOptions = {
 })
 export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
 
-
+  updatedAt: any;
   data: any;
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
@@ -77,39 +77,41 @@ export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
     // loop over cases
     Object.keys(this.data.cases).forEach(key => {
       dates.unshift(key);
-        // console.log('\n' + key + ': ' + this.data.cases[key]);
-      confirmed.unshift(this.data.cases[key]);
+      // console.log('\n' + key + ': ' + this.data.cases[key]);
+      confirmed.unshift((this.data.cases[key] / 1000000).toFixed(2));
     });
 
+    this.updatedAt = new Date(dates[0]);
+
     Object.keys(this.data.deaths).forEach(key => {
-        // console.log('\n' + key + ': ' + this.data.cases[key]);
-      deaths.unshift(this.data.deaths[key] );
+      // console.log('\n' + key + ': ' + this.data.cases[key]);
+      deaths.unshift((this.data.deaths[key] / 1000000).toFixed(2));
     });
 
     Object.keys(this.data.recovered).forEach(key => {
 
         // console.log('\n' + key + ': ' + this.data.cases[key]);
-      recovered.unshift(this.data.recovered[key]);
+      recovered.unshift((this.data.recovered[key] / 1000000).toFixed(2));
       });
 
     for (let i = 0; i < confirmed.length; i++)
     {
-      active.unshift(confirmed[i] - recovered[i]);
+      active.push(((confirmed[i] - recovered[i]) ).toFixed(2));
     }
 
     this.chartOptions = {
       series: [
+        // {
+        //   name: 'Confirmed',
+        //   data: confirmed
+        // },
         {
-          name: 'Confirmed',
-          data: confirmed
+          name: 'Active',
+          data: active
         },
         {
           name: 'Recovered',
           data: recovered
-        },
-        {
-          name: 'Active',
-          data: active
         },
         {
           name: 'Deaths',
@@ -131,13 +133,13 @@ export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
         colors: ['#fff']
       },
       title: {
-        text: 'Case Breakdown'
+        text: 'Case Breakdown (in Millions)'
       },
       xaxis: {
         categories: dates,
         labels: {
           formatter(val) {
-            return val.toLocaleString(); // + 'K';
+            return val.toLocaleString() + 'M';
           }
         }
       },
@@ -149,7 +151,7 @@ export class GlobalSevenDayCasesCardComponent implements OnInit, OnDestroy {
       tooltip: {
         y: {
           formatter(val) {
-            return val.toLocaleString() + ''; // + 'K';
+            return val.toFixed(2).toLocaleString() + 'M'; // + 'K';
           }
         }
       },

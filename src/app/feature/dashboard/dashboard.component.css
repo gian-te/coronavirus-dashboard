@@ -286,10 +286,11 @@ svg#clouds {
 }
 
 
-@media screen and (max-width: 575px) {
-  svg#rocket-smoke {
-    display: none;
-    visibility: hidden;
+@media screen and (max-width: 578px) {
+  *
+  {
+    font-family: 'Segoe UI Light';
+    font-size: 12px !important;
   }
 }
 *
