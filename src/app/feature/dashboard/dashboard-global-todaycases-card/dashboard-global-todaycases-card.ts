@@ -13,19 +13,27 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 import { MatSort, MatSortable, SortDirection } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { ChartComponent } from 'ng-apexcharts';
+
 
 import {
   ApexNonAxisChartSeries,
+  ApexPlotOptions,
+  ApexChart,
+  ApexLegend,
   ApexResponsive,
-  ApexChart
+  ChartComponent,
+  ApexTitleSubtitle
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
-  responsive: ApexResponsive[];
-  labels: any;
+  labels: string[];
+  colors: string[];
+  legend: ApexLegend;
+  plotOptions: ApexPlotOptions;
+  responsive: ApexResponsive | ApexResponsive[];
+  title: ApexTitleSubtitle;
 };
 
 @Component({
@@ -62,34 +70,99 @@ export class GlobalTodayCasesCardComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         that.data = response;
 
-        // https://apexcharts.com/angular-chart-demos/pie-charts/
+        // https://apexcharts.com/angular-chart-demos/radialbar-charts/custom-angle-circle/
 
         /*
         todayCases: 26114
         todayDeaths: 994
         todayRecovered: 18475
         */
+        const total = that.data.todayCases;
+
         this.chartOptions = {
-          series: [that.data.todayCases, that.data.todayRecovered, that.data.todayDeaths],
-          chart: {
-            width: 360,
-            type: 'pie'
+          title: {
+            // tslint:disable-next-line: max-line-length
+            text:  `Today's New Cases: ` + that.data.todayCases, // + '\n' +  `Today's Recoveries: ` + that.data.todayRecovered + '\n' +  `Today's Deaths: ` + that.data.todayDeaths  ,
+            align: 'center'
           },
-          labels: ['Active', 'Recovered', 'Died'],
-          responsive: [
-            {
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 300
-                },
-                legend: {
-                  position: 'bottom'
-                }
+        // tslint:disable-next-line: max-line-length
+        series: [ parseFloat((that.data.todayRecovered  / total * 100).toFixed(2)), parseFloat((that.data.todayDeaths  / total * 100).toFixed(2))],
+        chart: {
+          height: 320,
+          type: 'radialBar',
+          },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: true
+              },
+              value: {
+                show: true
               }
             }
-          ]
-        };
+          }
+        },
+        colors: ['#00e396', '#feb019', '#39539E'],
+      labels: ['Recoveries (' + this.data.todayRecovered + ')', 'Deaths (' + this.data.todayDeaths + ')'],
+      legend: {
+        show: true,
+        floating: true,
+        fontSize: '12px',
+        position: 'left',
+        offsetX: -20,
+        offsetY: 70,
+        labels: {
+          useSeriesColors: true
+        },
+        formatter(seriesName, opts) {
+          return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + '%';
+        },
+        itemMargin: {
+          horizontal: 3
+        }
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            legend: {
+              show: false
+            }
+          }
+        }
+      ]
+      };
+        // this.chartOptions = {
+        //   series: [],
+        //   chart: {
+        //     width: 360,
+        //     type: 'pie'
+        //   },
+        //   labels: ['Active', 'Recovered', 'Died'],
+        //   responsive: [
+        //     {
+        //       breakpoint: 480,
+        //       options: {
+        //         chart: {
+        //           width: 300
+        //         },
+        //         legend: {
+        //           position: 'bottom'
+        //         }
+        //       }
+        //     }
+        //   ]
+        // };
 
       });
   }

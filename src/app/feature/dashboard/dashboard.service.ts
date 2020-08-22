@@ -17,13 +17,13 @@ export class DashboardState {
   allAsOfYesterday: any;
   globalHistoricalData: any;
   allCurrentCountryData: any;
+  sevenDayData: any;
 }
 
 @Injectable()
 export class DashboardService extends Store<DashboardState> {
   
-
-
+  
   constructor(private appDataService: DashboardAppDataService,
               public spinnerService: SpinnerService
   ) {
@@ -72,6 +72,17 @@ export class DashboardService extends Store<DashboardState> {
        this.setState({
          ...this.state,
          allCurrentCountryData: data,
+       });
+       this.spinnerService.hide();
+     });
+  }
+
+  public getDataOfPastSevenDays() {
+    this.spinnerService.show();
+    this.appDataService.getDataOfPastSevenDays().subscribe(data => {
+       this.setState({
+         ...this.state,
+         sevenDayData: data,
        });
        this.spinnerService.hide();
      });

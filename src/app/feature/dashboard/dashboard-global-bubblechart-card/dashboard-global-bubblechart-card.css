@@ -33,13 +33,7 @@ mat-card-header.mat-card-header {
 
 .card-header-image
 {
-  background-image: url('../../../../assets/transparent-chart.png');
-  background-size: cover;
-}
-
-.card-map-header-image
-{
-  background-image: url('../../../../assets/transparent-earth.png');
+  background-image: url('../../../../assets/transparent-continent.png');
   background-size: cover;
 }
 

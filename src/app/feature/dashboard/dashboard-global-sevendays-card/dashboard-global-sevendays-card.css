@@ -20,6 +20,8 @@ mat-card-header.mat-card-header {
   padding: 0;
 }
 
+
+
 .mat-card-title {
   font-size: 18px;
   font-weight: 400;
@@ -31,9 +33,10 @@ mat-card-header.mat-card-header {
 
 .card-header-image
 {
-  background-image: url('../../../../assets/transparent-slope.png');
+  background-image: url('../../../../assets/transparent-bars.png');
   background-size: cover;
 }
+
 
 .card-icon {
   height: 64px;

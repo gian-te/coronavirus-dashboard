@@ -18,7 +18,8 @@ import { ChartComponent } from 'ng-apexcharts';
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
-  ApexChart
+  ApexChart,
+  ApexLegend
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
@@ -26,6 +27,8 @@ export type ChartOptions = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  colors: string[];
+  legend: ApexLegend;
 };
 
 @Component({
@@ -70,6 +73,14 @@ export class GlobalCaseRatioCardComponent implements OnInit, OnDestroy {
             type: 'donut'
           },
           labels: ['Active', 'Recovered', 'Died'],
+          colors: ['#00e396', '#ff4560', '#39539E'],
+          legend:
+          {
+              show: true,
+              labels: {
+                  useSeriesColors: true
+                }
+              },
           responsive: [
             {
               breakpoint: 480,

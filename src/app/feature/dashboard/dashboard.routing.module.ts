@@ -9,6 +9,7 @@ import { GlobalCaseRatioCardComponent  } from './dashboard-global-case-ratio-car
 import { GlobalMapCardComponent } from './dashboard-global-map-card/dashboard-global-map-card';
 import { GlobalBubbleChartCardComponent } from './dashboard-global-bubblechart-card/dashboard-global-bubblechart-card';
 import { GlobalTodayCasesCardComponent } from './dashboard-global-todaycases-card/dashboard-global-todaycases-card';
+import { GlobalSevenDayCasesCardComponent } from './dashboard-global-sevendays-card/dashboard-global-sevendays-card';
 
 
 export const routes: Routes = [
@@ -26,6 +27,6 @@ export class DashboardRoutingModule { }
 
 export const routedComponents = [
   // tslint:disable-next-line: max-line-length
-  DashboardComponent, GlobalTabularCardComponent, GlobalMapCardComponent, GlobalSummaryCardComponent, GlobalCaseRatioCardComponent, GlobalTimeseriesCardComponent, GlobalBubbleChartCardComponent,GlobalTodayCasesCardComponent
+  DashboardComponent, GlobalTabularCardComponent, GlobalMapCardComponent, GlobalSummaryCardComponent, GlobalCaseRatioCardComponent, GlobalTimeseriesCardComponent, GlobalBubbleChartCardComponent, GlobalTodayCasesCardComponent, GlobalSevenDayCasesCardComponent
 ];
 

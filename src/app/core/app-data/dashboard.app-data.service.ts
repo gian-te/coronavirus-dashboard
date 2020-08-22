@@ -36,7 +36,11 @@ export class DashboardAppDataService extends AppDataService {
   public getAllCurrentCountryData() {
     let headers = new HttpHeaders();
     return this._http.get(this.getWebApiHost() + 'continents?yesterday=true&sort', { headers });
-
-    // return this._http.get(this.getWebApiHost() + 'countries?yesterday&sort', { headers });
   }
+
+  public getDataOfPastSevenDays() {
+    let headers = new HttpHeaders();
+    return this._http.get(this.getWebApiHost() + 'historical/all?lastdays=7', { headers });
+  }
+
 }
