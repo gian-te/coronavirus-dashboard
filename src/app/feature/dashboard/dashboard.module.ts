@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule, routedComponents } from './dashboard.routing.module';
 import { DashboardService } from './dashboard.service';
 import { DashboardComponent } from './dashboard.component';
-import { SpinnerService } from 'src/app/core/spinner/spinner.service';
-import { SpinnerModule } from 'src/app/core/spinner/spinner.module';
+
 
 // 3rd party
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -19,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -30,17 +30,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
     CommonModule,
     HttpClientModule,
     DashboardRoutingModule,
-    SpinnerModule,
     GoogleMapsModule, NgApexchartsModule,
-    MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule,MatGridListModule
+    MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatGridListModule, MatProgressSpinnerModule
   ],
   exports:
     [
       DashboardComponent
     ],
   providers: [
-    DashboardService,
-    SpinnerService
+    DashboardService
   ],
 })
 export class DashboardModule { }

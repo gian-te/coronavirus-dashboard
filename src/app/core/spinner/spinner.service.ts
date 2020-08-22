@@ -24,12 +24,12 @@ export class SpinnerService {
 
   show() {
     console.log('showing spinner');
-    this._spinnerSubject.next(<SpinnerState>{ show: true });
+    this._spinnerSubject.next( { show: true } as SpinnerState);
   }
 
   hide() {
     console.log('hiding spinner');
-    var that = this;
-    setTimeout(function () { that._spinnerSubject.next(<SpinnerState>{ show: false });}, 500); 
+    let that = this;
+    setTimeout(function() { that._spinnerSubject.next( { show: false } as SpinnerState); }, 500);
   }
 }

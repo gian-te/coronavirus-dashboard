@@ -23,6 +23,7 @@ import { CountriesModule } from './feature/countries/countries.module';
 //3rd party
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { SpinnerService } from './core/spinner/spinner.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MatButtonModule } from '@angular/material/button';
     },
     ConfigurationManagerService,
     HttpClientModule,
+    SpinnerService
   ],
   bootstrap: [AppComponent]
 })

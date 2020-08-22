@@ -4,12 +4,12 @@
   top: 46%;
   height: 20px;
   width: 20px;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .Overlay {
   position: absolute;
-  z-index: 900;
+  z-index: 9998;
   top: 0;
   left: 0;
   display: none;
