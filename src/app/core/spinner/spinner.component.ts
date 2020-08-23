@@ -3,12 +3,12 @@ import { Subscription } from 'rxjs';
 import { SpinnerService, SpinnerState } from './spinner.service';
 
 @Component({
-  selector: 'div-spinner',
+  selector: 'app-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent implements OnDestroy, OnInit {
-  visible = false;
+  visible = true;
 
   private spinnerStateChanged: Subscription;
 
