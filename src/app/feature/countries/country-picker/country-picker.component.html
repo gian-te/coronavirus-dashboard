@@ -1,1 +1,20 @@
-<p>country-picker works!</p>
+<div>
+    <p>country-picker works!</p>
+    <select matNativeControl required>
+      <option value="" selected></option>
+      <option *ngFor="let country of countries" value="country.country">{{ country.country }}</option>
+    </select>
+  <!-- <mat-form-field appearance="fill" style="background-color: lightgray;">
+    <mat-label></mat-label>
+    <!-- <mat-select placeholder="Select a country..." [(value)]="selected">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let country of countries" value="country.country">{{ country.country }}</mat-option>
+    </mat-select> -->
+<!-- </mat-form-field> -->
+
+
+  <br/>
+<div>
+    <span> Country contents go here, show demographics, today cases, historical cases, etc. Maybe show some news and current events for this country. </span>
+</div>
+</div>

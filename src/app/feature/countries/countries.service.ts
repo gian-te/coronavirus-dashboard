@@ -3,7 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 
 // Core Services
 import { Store } from '../../core/store/store';
-import { DashboardAppDataService } from '../../core/app-data/dashboard.app-data.service';
+import { CountriesAppDataService } from '../../core/app-data/countries.app-data.service';
 import { SpinnerService } from '../../core/spinner/spinner.service';
 
 
@@ -13,17 +13,27 @@ import { ConfigurationManagerService } from '../../core/service/configuration-ma
 
 export class CountriesState {
   selectedCountry = '';
+  countries: any;
 }
 
 @Injectable()
-export class Countries extends Store<CountriesState> {
+export class CountriesService extends Store<CountriesState> {
   
 
-  constructor(private appDataService: DashboardAppDataService,
+  constructor(private appDataService: CountriesAppDataService,
               public spinnerService: SpinnerService
   ) {
     super(new CountriesState());
 
+  }
+
+  public getAllCountries() {
+    this.appDataService.getAllCountries().subscribe(data => {
+      this.setState({
+        ...this.state,
+        countries: data,
+      });
+    });
   }
 
   // public getGlobalData(): void {
