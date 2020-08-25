@@ -1,0 +1,30 @@
+<div class="card-container" style="margin: 5px 5px 5px 5px; display: inline-block;">
+<mat-card *ngIf='data' style=" height: 460px;" title="A recovery ratio of greater than 100% is what we need to reduce the number of active cases.">
+  <mat-card-header>
+    <div mat-card-avatar class="card-header-image"></div>
+    <mat-card-title><b>Today's Cases</b></mat-card-title>
+    <mat-card-subtitle>Shows the percentage of today's recoveries and today's deaths for every new case.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content style="margin-top: 10px;">
+    <div>
+      <div id="chart">
+        <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [plotOptions]="chartOptions.plotOptions"
+    [labels]="chartOptions.labels"
+    [legend]="chartOptions.legend"
+    [colors]="chartOptions.colors"
+    [responsive]="chartOptions.responsive"
+    [title]= "chartOptions.title"
+  ></apx-chart>
+      </div>
+      
+      
+    </div>
+    </mat-card-content>
+</mat-card>
+
+
+
+</div>
