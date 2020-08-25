@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/countries/all",
+      "launchUrl": "api/countries/Philippines",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "coronavirus_dashboard_api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/countries/all",
+      "launchUrl": "api/countries/Philippines",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

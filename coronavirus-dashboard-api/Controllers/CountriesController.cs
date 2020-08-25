@@ -21,7 +21,7 @@ namespace coronavirus_dashboard_api.Controllers
         // GET api/values/5
         [Route("all")]
         [HttpGet]
-        public ActionResult<string> Get()
+        public ActionResult<string> GetAll()
         {
             Stopwatch timer = new Stopwatch();
             timer.Start();
@@ -39,6 +39,16 @@ namespace coronavirus_dashboard_api.Controllers
                 });
 
             timer.Stop();
+            return Ok(retVal);
+        }
+
+        // GET api/values/5
+        [Route("{country}")]
+        [HttpGet]
+        public ActionResult<string> GetCountry(string country)
+        {
+            var retVal = GetCountryData(country);
+
             return Ok(retVal);
         }
 
@@ -167,6 +177,22 @@ namespace coronavirus_dashboard_api.Controllers
                         }
                     );
 
+
+                Parallel.Invoke(
+                    () =>
+                    {
+                        c.OrderBy(stats => stats.Date);
+                    },
+                    () =>
+                    {
+                        r.OrderBy(stats => stats.Date);
+
+                    },
+                    () =>
+                    {
+                        d.OrderBy(stats => stats.Date);
+                    }
+                );
 
                 retVal.confirmed = c;
                 retVal.recovered = r;
