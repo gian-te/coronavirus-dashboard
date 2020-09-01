@@ -9,6 +9,7 @@ import { ConfigurationManagerService } from '../service/configuration-manager.se
 
 @Injectable()
 export class CountriesAppDataService extends AppDataService {
+  
 
   constructor(protected _http: HttpClient, public configService: ConfigurationManagerService) {
     super(configService);
@@ -23,6 +24,11 @@ export class CountriesAppDataService extends AppDataService {
   public getAllCountries() {
     let headers = new HttpHeaders();
     return this._http.get(this.getWebApiHost() + 'countries?yesterday', { headers });
+  }
+
+  getSpecificCountryData(country: string) {
+    let headers = new HttpHeaders();
+    return this._http.get('https://localhost:44342/api/countries/' + country, { headers });
   }
 
 }

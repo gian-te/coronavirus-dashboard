@@ -14,6 +14,7 @@ import { ConfigurationManagerService } from '../../core/service/configuration-ma
 export class CountriesState {
   selectedCountry = '';
   countries: any;
+  countryData: any;
 }
 
 @Injectable()
@@ -35,6 +36,15 @@ export class CountriesService extends Store<CountriesState> {
       });
     });
   }
+  getSpecificCountryData(country: string) {
+    this.appDataService.getSpecificCountryData(country).subscribe(data => {
+      this.setState({
+        ...this.state,
+        countryData: data,
+      });
+    });
+  }
+  
 
   // public getGlobalData(): void {
   //   this.spinnerService.show();

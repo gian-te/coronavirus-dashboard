@@ -5,6 +5,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using coronavirus_dashboard_api.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -12,6 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace coronavirus_dashboard_api.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class CountriesController : ControllerBase

@@ -1,9 +1,11 @@
 <div>
     <p>country-picker works!</p>
-    <select required>
+    <select required [(ngModel)]="selected" (ngModelChange)="countryChanged($event)">
       <option value="" selected></option>
-      <option *ngFor="let country of countries" value="country.country">{{ country.country }}</option>
+      <option *ngFor="let country of countries" [value]="country.country">{{ country.country }}</option>
     </select>
+
+    <!-- {{ selected }} -->
   <!-- <mat-form-field appearance="fill" style="background-color: lightgray;">
     <mat-label></mat-label>
     <!-- <mat-select placeholder="Select a country..." [(value)]="selected">

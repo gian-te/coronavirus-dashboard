@@ -9,8 +9,8 @@ import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 })
 export class CountryPickerComponent implements OnInit {
   countries: [];
-  selected: string;
-
+  selected: string = "test";
+  countryData: any;
   constructor(private countriesService: CountriesService) { }
 
   ngOnInit(): void {
@@ -30,5 +30,23 @@ export class CountryPickerComponent implements OnInit {
         this.countries = response;
         console.log(this.countries);
       });
+    
+      this.countriesService.state$
+      .pipe(
+        map(state => state.countryData),
+        filter(data => data != null),
+        distinctUntilChanged()
+      )
+      .subscribe(response => {
+        
+        this.countryData = response;
+        console.log(this.countryData);
+      });
+  }
+
+  countryChanged(value: any): void{
+    console.log(value);
+    this.countriesService.getSpecificCountryData(value);
+
   }
 }

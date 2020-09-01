@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule, routedComponents } from './countries.routing.module';
 import { CountriesService } from './countries.service';
@@ -33,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
     DashboardRoutingModule,
     SpinnerModule,
     GoogleMapsModule, NgApexchartsModule,
