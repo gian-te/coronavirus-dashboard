@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace coronavirus_dashboard_api.Models
 {
-    public class DailyStats
+    public class DailyConfirmed : DailyStats
     {
-        public string Date { get; set; }
-        public int Value { get; set; }
+        public int NewConfirmed { get; set; }
     }
 }

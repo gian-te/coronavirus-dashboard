@@ -10,7 +10,6 @@ import { ConfigurationManagerService } from '../service/configuration-manager.se
 @Injectable()
 export class CountriesAppDataService extends AppDataService {
   
-
   constructor(protected _http: HttpClient, public configService: ConfigurationManagerService) {
     super(configService);
   }
@@ -31,4 +30,8 @@ export class CountriesAppDataService extends AppDataService {
     return this._http.get('https://localhost:44342/api/countries/' + country, { headers });
   }
 
+  getAllCountryData() {
+    let headers = new HttpHeaders();
+    return this._http.get('https://gt-coronavirus-api.azurewebsites.net/api/countries/parallel/all' , { headers });
+  }
 }

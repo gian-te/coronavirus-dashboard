@@ -19,6 +19,7 @@ export class CountriesState {
 
 @Injectable()
 export class CountriesService extends Store<CountriesState> {
+ 
   
 
   constructor(private appDataService: CountriesAppDataService,
@@ -44,7 +45,15 @@ export class CountriesService extends Store<CountriesState> {
       });
     });
   }
-  
+
+  getAllCountryData() {
+    this.appDataService.getAllCountryData().subscribe(data => {
+      this.setState({
+        ...this.state,
+        countryData: data,
+      });
+    });
+  }
 
   // public getGlobalData(): void {
   //   this.spinnerService.show();
