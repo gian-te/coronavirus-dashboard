@@ -15,6 +15,7 @@ export class CountriesState {
   selectedCountry = '';
   countries: any;
   countryData: any;
+  x: any;
 }
 
 @Injectable()
@@ -55,6 +56,32 @@ export class CountriesService extends Store<CountriesState> {
     });
   }
 
+  getAllCountryDataSerial() {
+    this.appDataService.getAllCountryDataSerial().subscribe(data => {
+      this.setState({
+        ...this.state,
+        x: data,
+      });
+    });
+  }
+
+  getCountryDataFirstHalf() {
+    this.appDataService.getCountryDataFirstHalf().subscribe(data => {
+      this.setState({
+        ...this.state,
+        countryData: data,
+      });
+    });
+  }
+
+  getCountryDataSecondHalf() {
+    this.appDataService.getCountryDataSecondHalf().subscribe(data => {
+      this.setState({
+        ...this.state,
+        countryData: data,
+      });
+    });
+  }
   // public getGlobalData(): void {
   //   this.spinnerService.show();
   //   this.appDataService.getGlobalCases().subscribe(data => {

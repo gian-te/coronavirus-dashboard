@@ -34,4 +34,19 @@ export class CountriesAppDataService extends AppDataService {
     let headers = new HttpHeaders();
     return this._http.get('https://gt-coronavirus-api.azurewebsites.net/api/countries/parallel/all' , { headers });
   }
+
+  getAllCountryDataSerial() {
+    let headers = new HttpHeaders();
+    return this._http.get('https://gt-coronavirus-api.azurewebsites.net/api/countries/serial/all' , { headers });
+  }
+
+  getCountryDataFirstHalf() {
+    let headers = new HttpHeaders();
+    return this._http.get('https://gt-coronavirus-api.azurewebsites.net/api/countries/parallel/firsthalf' , { headers });
+  }
+
+  getCountryDataSecondHalf() {
+    let headers = new HttpHeaders();
+    return this._http.get('https://gt-api.azurewebsites.net/api/countries/parallel/secondhalf' , { headers });
+  }
 }

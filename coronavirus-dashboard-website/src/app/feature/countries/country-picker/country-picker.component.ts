@@ -15,7 +15,10 @@ export class CountryPickerComponent implements OnInit {
 
   ngOnInit(): void {
     this.countriesService.getAllCountries();
-    this.countriesService.getAllCountryData();
+    //this.countriesService.getAllCountryData();
+    this.countriesService.getCountryDataFirstHalf();
+    this.countriesService.getCountryDataSecondHalf();
+    //this.countriesService.getAllCountryDataSerial();
   }
 
   // https://appdividend.com/2019/12/05/angular-select-dropdown-example-angular-material-select/

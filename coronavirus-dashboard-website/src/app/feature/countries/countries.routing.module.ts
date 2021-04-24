@@ -4,12 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CountriesComponent } from './countries.component';
 import { CountryPickerComponent } from './country-picker/country-picker.component';
 
-// import { HeatmapCardComponent } from './dashboard-heatmap-card/dashboard-heatmap-card';
-// import { MapCardComponent } from './dashboard-map-card/dashboard-map-card';
-// import { YesterdayCardComponent } from './dashboard-yesterday-card/dashboard-yesterday-card';
-// import { ChartCardComponent } from './dashboard-chart-card/dashboard-chart-card';
-
-
 export const routes: Routes = [
   {
     path: '',
@@ -26,4 +20,3 @@ export class DashboardRoutingModule { }
 export const routedComponents = [
   CountriesComponent,CountryPickerComponent
 ];
-
